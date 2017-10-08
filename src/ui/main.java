@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.ArrayList;
+import funciones.Grafo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Device;
@@ -12,24 +13,30 @@ public class main {
 	static ArrayList<String> lista;
 	static Grafo objeto = new Grafo("nodo0",new CrearFormas().condicion(lista),null,null);
 	
+	
 	public static void main(String [] args) {
 		Display display = Display.getDefault();
-		Grafo objeto2;
-		objeto2 = objeto;
+		//Grafo objeto2;
+		//objeto2 = objeto;
 		
-		for (int i = 1; i < 5; i ++) {
-			Grafo objeto3 = new Grafo("nodo"+ i,new CrearFormas().cicloWhile(lista),null,objeto2);
-			objeto2.setNext(objeto3);
-			objeto2 = objeto3;
-		}
-		//for (int i = 0; i < 5; i ++) {
-		//	objeto =(Grafo) objeto.next();
-		//
+		//for (int i = 1; i < 5; i ++) {
+		//	Grafo objeto3 = new Grafo("nodo"+ i,new CrearFormas().cicloWhile(lista),null,objeto2);
+		//	objeto2.setNext(objeto3);
+		//	objeto2 = objeto3;
 		//}
+		Grafo objeto2 = new Grafo("nodo1",new CrearFormas().definicionVariable(lista),null,objeto);
+		Grafo objeto3 = new Grafo("nodo2",new CrearFormas().cicloFor(lista),null,objeto2);
+		Grafo objeto4 = new Grafo("nodo3",new CrearFormas().instruccionesVarias(lista),null,objeto3);
+		Grafo objeto5 = new Grafo("nodo4",new CrearFormas().cicloWhile(lista),null,objeto4);
+		objeto.setNext(objeto2);
+		objeto2.setNext(objeto3);
+		objeto3.setNext(objeto4);
+		objeto4.setNext(objeto5);
 		Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
 		crearBotones(shell);
+		crearEtiquetaDerecha(shell);
 		shell.setText ("Diagrama");
-		shell.setSize (300, 300);
+		shell.setSize (600, 300);
 		shell.setBackgroundMode(1);
 		shell.setBackgroundImage((Image) objeto.getContenido());
 		shell.open ();
@@ -49,6 +56,9 @@ public class main {
 
 			@Override
 			public void handleEvent(Event arg0) {
+				if (objeto.getPrevio() == null) {
+		    		return;
+		    	}
 				objeto = (Grafo) objeto.getPrevio();                   
 				Display.getCurrent().syncExec(new Runnable() {
 				    public void run() {
@@ -67,6 +77,9 @@ public class main {
 
 			@Override
 			public void handleEvent(Event arg0) {
+				if (objeto.next() == null) {
+		    		return;
+		    	}
 				objeto = (Grafo) objeto.next();                   
 				Display.getCurrent().syncExec(new Runnable() {
 				    public void run() {
@@ -79,6 +92,13 @@ public class main {
 		
 	}
 
+	public static void crearEtiquetaDerecha(Shell shell) {
+		Label etiqueta = new Label(shell, SWT.NONE);
+		etiqueta.setBounds(300,0,300,300);
+		etiqueta.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
+		
+	}
+	
 	public static Device display() {
 	
 		return null;

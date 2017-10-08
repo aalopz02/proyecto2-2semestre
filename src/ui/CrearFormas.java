@@ -3,7 +3,6 @@ package ui;
 import java.util.ArrayList;
 
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
 public class CrearFormas extends Formas {
 	
