@@ -1,42 +1,52 @@
 package ui;
 
 import java.util.ArrayList;
-
+import org.eclipse.swt.custom.CLabel:
 import org.eclipse.swt.graphics.Image;
 
 public class CrearFormas extends Formas {
 	
 	@Override
-	protected Image condicion(ArrayList<String> lista) {
+	protected CLabel condicion(ArrayList<String> lista) {
 		Image imagen = new Image(ui.main.display(),"./src/img/condicion.png");
-		return imagen;
+		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
+		label.setImage(imagen);
+		return label;
 	}
 
 	@Override
-	protected Image cicloWhile(ArrayList<String> lista) {
+	protected CLabel cicloWhile(ArrayList<String> lista) {
 		Image imagen = new Image(ui.main.display(),"./src/img/While.png");
-		return imagen;
+		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
+		label.setImage(imagen);
+		return label;
 		
 	}
 
 	@Override
-	protected Image cicloFor(ArrayList<String> lista) {
+	protected CLabel cicloFor(ArrayList<String> lista) {
 		Image imagen = new Image(ui.main.display(),"./src/img/For.png");
-		return imagen;
+		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
+		label.setImage(imagen);
+		return label;
 	
 	}
 
 	@Override
-	protected Image definicionVariable(ArrayList<String> lista) {
+	protected CLabel definicionVariable(ArrayList<String> lista) {
 		Image imagen = new Image(ui.main.display(),"./src/img/declaracion.png");
-		return imagen;
+		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
+		label.setImage(imagen);
+		return label;
 
 	}
 
 	@Override
-	protected Image instruccionesVarias(ArrayList<String> lista) {
+	protected CLabel instruccionesVarias(ArrayList<String> lista) {
 		Image imagen = new Image(ui.main.display(),"./src/img/metodoExterno.png");
-		return imagen;
+		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
+		label.setImage(imagen);
+		return label;
 	
 	}
 
