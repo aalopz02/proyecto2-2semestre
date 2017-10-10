@@ -88,12 +88,12 @@ public class main {
 			
 		});
 		Button stepInto = new Button(shell, SWT.PUSH);
-		stepInto.setBounds(600, 246, 60, 25);
+		stepInto.setBounds(0, 306, 60, 25);
 		stepInto.setText("Step Into");
 		stepInto.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		
 		Button stepOver = new Button(shell, SWT.PUSH);
-		stepOver.setBounds(300, 246, 60, 25);
+		stepOver.setBounds(0, 540, 60, 25);
 		stepOver.setText("Step Over");
 		stepOver.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		
