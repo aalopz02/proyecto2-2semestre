@@ -36,8 +36,7 @@ public class main {
 		crearEtiquetaDerecha(shell);
 		shell.setText ("Diagrama");
 		shell.setSize (600, 300);
-		shell.setBackgroundMode(1);
-		shell.setBackgroundImage((Image) objeto.getContenido());
+		objeto.getContenido().setBounds(150, 150, 300, 300);
 		shell.open ();
 	    while (!display.isDisposed()) {
 	    	if (!display.readAndDispatch()) { 
@@ -61,7 +60,7 @@ public class main {
 				objeto = (Grafo) objeto.getPrevio();                   
 				Display.getCurrent().syncExec(new Runnable() {
 				    public void run() {
-				    	shell.setBackgroundImage((Image) objeto.getContenido());
+				    	objeto.getContenido().setBounds(150, 150, 300, 300);
 				    }
 				});
 				
@@ -82,7 +81,7 @@ public class main {
 				objeto = (Grafo) objeto.next();                   
 				Display.getCurrent().syncExec(new Runnable() {
 				    public void run() {
-				    	shell.setBackgroundImage((Image) objeto.getContenido());
+				    	objeto.getContenido().setBounds(150, 150, 300, 300);
 				    }
 				});
 			}
