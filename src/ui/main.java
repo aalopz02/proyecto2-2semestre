@@ -12,7 +12,7 @@ public class main {
 	
 	static ArrayList<String> lista;
 	static Grafo objeto = new Grafo("nodo0",new CrearFormas().condicion(lista),null,null);
-	
+	static Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
 	
 	public static void main(String [] args) {
 		Display display = Display.getDefault();
@@ -32,7 +32,6 @@ public class main {
 		objeto2.setNext(objeto3);
 		objeto3.setNext(objeto4);
 		objeto4.setNext(objeto5);
-		Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
 		crearBotones(shell);
 		crearEtiquetaDerecha(shell);
 		shell.setText ("Diagrama");
@@ -104,5 +103,7 @@ public class main {
 		return null;
 	}
 	
-
+	public static Shell shell(){
+		return shell;
+	}
 }
