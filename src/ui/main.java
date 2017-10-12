@@ -9,6 +9,8 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.*;
 
 public class main {	
+	https://stackoverflow.com/questions/15133999/scrolling-canvas-content
+	https://stackoverflow.com/questions/13802131/in-an-eclipse-plugin-how-can-i-programmatically-highlight-lines-of-codes-in-the
 	
 	static ArrayList<String> lista;
 	static Grafo objeto = new Grafo("nodo0",new CrearFormas().condicion(lista),null,null);
