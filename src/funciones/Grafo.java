@@ -1,17 +1,22 @@
 package funciones;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+
+import org.eclipse.swt.graphics.Rectangle;
 
 public class Grafo implements Iterator<Object>{
 
 	private String nombreNodo;
-	private Object contenido;
+	private Rectangle contenido;
+	private ArrayList<String> instrucciones;
 	private Object siguiente = null;
 	private Object previo = null;
 	
-	public Grafo(String nombreNodo, Object contenido, Object siguiente, Object previo){
+	public Grafo(String nombreNodo, Object contenido, ArrayList<String> instrucciones, Object siguiente, Object previo){
 		setNombreNodo(nombreNodo);
-		setContenido(contenido);
+		setContenido((Rectangle) contenido);
+		setInstrucciones(instrucciones);
 		setNext(siguiente);
 		setPrevio(previo);
 	}
@@ -44,13 +49,13 @@ public class Grafo implements Iterator<Object>{
 	/**
 	 * @return contenido
 	 */
-	public Object getContenido() {
+	public Rectangle getContenido() {
 		return contenido;
 	}
 	/**
 	 * @param define el contenido 
 	 */
-	public void setContenido(Object contenido) {
+	public void setContenido(Rectangle contenido) {
 		this.contenido = contenido;
 	}
 
@@ -78,6 +83,18 @@ public class Grafo implements Iterator<Object>{
 	 */
 	public void setPrevio(Object previo) {
 		this.previo = previo;
+	}
+	/**
+	 * @return the instrucciones
+	 */
+	public ArrayList<String> getInstrucciones() {
+		return instrucciones;
+	}
+	/**
+	 * @param instrucciones the instrucciones to set
+	 */
+	public void setInstrucciones(ArrayList<String> instrucciones) {
+		this.instrucciones = instrucciones;
 	}
 
 }

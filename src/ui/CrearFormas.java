@@ -1,53 +1,52 @@
 package ui;
 
 import java.util.ArrayList;
-import org.eclipse.swt.custom.CLabel:
-import org.eclipse.swt.graphics.Image;
+
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.GC;
+
+import funciones.Grafo;
 
 public class CrearFormas extends Formas {
+	GC gc = new GC(ui.main.canvas);
 	
-	@Override
-	protected CLabel condicion(ArrayList<String> lista) {
-		Image imagen = new Image(ui.main.display(),"./src/img/condicion.png");
-		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
-		label.setImage(imagen);
-		return label;
-	}
-
-	@Override
-	protected CLabel cicloWhile(ArrayList<String> lista) {
-		Image imagen = new Image(ui.main.display(),"./src/img/While.png");
-		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
-		label.setImage(imagen);
-		return label;
+	protected void crearFlechas() {
+		gc.setForeground(new Color(ui.main.shell.getDisplay(), 255, 255, 200));
+		gc.drawRectangle(5,5,45,45);
+		gc.setForeground(new Color(ui.main.shell.getDisplay(), 0, 0, 0));
+		gc.drawRectangle(50,50,45,45);
+	    gc.dispose();
 		
 	}
 
 	@Override
-	protected CLabel cicloFor(ArrayList<String> lista) {
-		Image imagen = new Image(ui.main.display(),"./src/img/For.png");
-		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
-		label.setImage(imagen);
-		return label;
-	
+	protected void condicion(Grafo objeto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	protected CLabel definicionVariable(ArrayList<String> lista) {
-		Image imagen = new Image(ui.main.display(),"./src/img/declaracion.png");
-		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
-		label.setImage(imagen);
-		return label;
-
+	protected void cicloWhile(Grafo objeto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	protected CLabel instruccionesVarias(ArrayList<String> lista) {
-		Image imagen = new Image(ui.main.display(),"./src/img/metodoExterno.png");
-		CLabel label = new CLabel(ui.main.shell(), SWT.BORDER);
-		label.setImage(imagen);
-		return label;
-	
+	protected void cicloFor(Grafo objeto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void definicionVariable(Grafo objeto) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void instruccionesVarias(Grafo objeto) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

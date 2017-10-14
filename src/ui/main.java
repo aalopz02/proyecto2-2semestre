@@ -4,42 +4,41 @@ import java.util.ArrayList;
 import funciones.Grafo;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Device;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.*;
 
 public class main {	
-	https://stackoverflow.com/questions/15133999/scrolling-canvas-content
-	https://stackoverflow.com/questions/13802131/in-an-eclipse-plugin-how-can-i-programmatically-highlight-lines-of-codes-in-the
 	
 	static ArrayList<String> lista;
-	static Grafo objeto = new Grafo("nodo0",new CrearFormas().condicion(lista),null,null);
 	static Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
+	static Canvas canvas = new  Canvas(shell, SWT.None);
+	static int posicionX = 150;
+	static int posicionY = 0;
+	static Grafo objeto1 = new Grafo("inicio", new Rectangle(0, 0,posicionX, posicionY), lista, null, null);
+    static Label etiqueta = new Label(shell, SWT.NONE);
 	
 	public static void main(String [] args) {
 		Display display = Display.getDefault();
-		//Grafo objeto2;
-		//objeto2 = objeto;
+		Grafo objeto2;
+		objeto2 = objeto1;
 		
-		//for (int i = 1; i < 5; i ++) {
-		//	Grafo objeto3 = new Grafo("nodo"+ i,new CrearFormas().cicloWhile(lista),null,objeto2);
-		//	objeto2.setNext(objeto3);
-		//	objeto2 = objeto3;
-		//}
-		Grafo objeto2 = new Grafo("nodo1",new CrearFormas().definicionVariable(lista),null,objeto);
-		Grafo objeto3 = new Grafo("nodo2",new CrearFormas().cicloFor(lista),null,objeto2);
-		Grafo objeto4 = new Grafo("nodo3",new CrearFormas().instruccionesVarias(lista),null,objeto3);
-		Grafo objeto5 = new Grafo("nodo4",new CrearFormas().cicloWhile(lista),null,objeto4);
-		objeto.setNext(objeto2);
-		objeto2.setNext(objeto3);
-		objeto3.setNext(objeto4);
-		objeto4.setNext(objeto5);
-		crearBotones(shell);
-		crearEtiquetaDerecha(shell);
+		for (int i = 1; i < 5; i ++) {
+			posicionY += 30;
+			Grafo objeto3 = new Grafo("declaracion", new Rectangle(0, 0, posicionX, posicionY), lista, null, objeto2);
+			objeto2.setNext(objeto3);
+			objeto2 = objeto3;
+		  }
+		objeto2 = objeto1;
+		posicionY = 0;
+		dibujoInicial(objeto2);
+		canvas.setBackground(new Color(shell.getDisplay(), 255, 255, 200));
+		canvas.setBounds(0, 0, 400, 695);
+		crearBotones(objeto2);
+		crearEtiquetas();
 		shell.setText ("Diagrama");
-		shell.setSize (600, 300);
-		objeto.getContenido().setBounds(150, 150, 300, 300);
+		shell.setSize (700, 750);
 		shell.open ();
+		   
 	    while (!display.isDisposed()) {
 	    	if (!display.readAndDispatch()) { 
 	             display.sleep();
@@ -47,75 +46,69 @@ public class main {
 	    }
 	}
 	
-	private static void crearBotones(Shell shell) {
+	private static void crearEtiquetas() {
+		etiqueta.setBackground(new Color(shell.getDisplay(), 255, 255, 200));
+		etiqueta.setBounds(400, 0, 300, 300);
+		
+	}
+	
+	private static void crearBotones(funciones.Grafo objeto) {
 		Button anterior = new Button(shell, SWT.PUSH);
-		anterior.setBounds(0, 246, 60, 25);
+		anterior.setBounds(0, 695, 60, 25);
 		anterior.setText("Anterior");
 		anterior.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		anterior.addListener(SWT.Selection, new Listener() {
 
 			@Override
 			public void handleEvent(Event arg0) {
-				if (objeto.getPrevio() == null) {
-		    		return;
-		    	}
-				objeto = (Grafo) objeto.getPrevio();                   
-				Display.getCurrent().syncExec(new Runnable() {
-				    public void run() {
-				    	objeto.getContenido().setBounds(150, 150, 300, 300);
-				    }
-				});
+				CrearFormas formas =  new CrearFormas();
+				formas.condicion(objeto);
 				
 			}
 			
 		});
 		Button siguiente = new Button(shell, SWT.PUSH);
-		siguiente.setBounds(234, 246, 60, 25);
+		siguiente.setBounds(340, 695, 60, 25);
 		siguiente.setText("Siguiente");
 		siguiente.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		siguiente.addListener(SWT.Selection, new Listener() {
 
 			@Override
 			public void handleEvent(Event arg0) {
-				if (objeto.next() == null) {
-		    		return;
-		    	}
-				objeto = (Grafo) objeto.next();                   
-				Display.getCurrent().syncExec(new Runnable() {
-				    public void run() {
-				    	objeto.getContenido().setBounds(150, 150, 300, 300);
-				    }
-				});
+				CrearFormas formas =  new CrearFormas();
+				formas.crearFlechas();
+				
 			}
 			
 		});
 		Button stepInto = new Button(shell, SWT.PUSH);
-		stepInto.setBounds(0, 306, 60, 25);
+		stepInto.setBounds(400, 300, 60, 25);
 		stepInto.setText("Step Into");
 		stepInto.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		
 		Button stepOver = new Button(shell, SWT.PUSH);
-		stepOver.setBounds(0, 540, 60, 25);
+		stepOver.setBounds(635, 300, 60, 25);
 		stepOver.setText("Step Over");
 		stepOver.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		
 		
 	}
-
-	public static void crearEtiquetaDerecha(Shell shell) {
-		Label etiqueta = new Label(shell, SWT.NONE);
-		etiqueta.setBounds(300,0,300,300);
-		etiqueta.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
+	
+	public static void dibujoInicial(funciones.Grafo objeto2) {
+		CrearFormasInicio formas = new CrearFormasInicio();
+		while (true){
+			if( objeto2.getNombreNodo().equals("inicio")) {formas.inicioFin(objeto2);}
+			if( objeto2.getNombreNodo().equals("condicion")) {formas.condicion(objeto2);}
+			if( objeto2.getNombreNodo().equals("while")) {formas.cicloWhile(objeto2);}
+			if( objeto2.getNombreNodo().equals("for")) {formas.cicloFor(objeto2);}
+			if( objeto2.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto2);}
+			if( objeto2.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto2);}
+			if(objeto2.hasNext()) {
+				objeto2 = (Grafo) objeto2.next(); 
+			}
+			else {break;}
+		}
 		
 		
-	}
-	
-	public static Device display() {
-	
-		return null;
-	}
-	
-	public static Shell shell(){
-		return shell;
 	}
 }

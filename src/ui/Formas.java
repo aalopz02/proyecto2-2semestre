@@ -1,14 +1,11 @@
 package ui;
 
-import java.util.ArrayList;
-import org.eclipse.swt.custom.CLabel:
-
 public abstract class Formas {
 	
-	protected abstract CLabel condicion(ArrayList<String> lista);
-	protected abstract CLabel cicloWhile(ArrayList<String> lista);
-	protected abstract CLabel cicloFor(ArrayList<String> lista);
-	protected abstract CLabel definicionVariable(ArrayList<String> lista);
-	protected abstract CLabel instruccionesVarias(ArrayList<String> lista);
+	protected abstract void condicion(funciones.Grafo objeto);
+	protected abstract void cicloWhile(funciones.Grafo objeto);
+	protected abstract void cicloFor(funciones.Grafo objeto);
+	protected abstract void definicionVariable(funciones.Grafo objeto);
+	protected abstract void instruccionesVarias(funciones.Grafo objeto);
 	
 }
