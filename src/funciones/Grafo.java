@@ -96,5 +96,13 @@ public class Grafo implements Iterator<Object>{
 	public void setInstrucciones(ArrayList<String> instrucciones) {
 		this.instrucciones = instrucciones;
 	}
-
+	/**
+	 * @return si tiene objeto anterior
+	 */
+	public boolean hasPrev() {
+		if (this.previo == null) {
+			return false;
+		}
+		return true;
+	}
 }
