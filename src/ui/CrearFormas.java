@@ -4,7 +4,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.GC;
 import funciones.Grafo;
 
-public class CrearFormas extends Formas {
+public class CrearFormas extends funciones.Formas {
 	GC gc = new GC(ui.main.canvas);
 	uiController fondo = new uiController();
 	
