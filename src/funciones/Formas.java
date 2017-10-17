@@ -1,4 +1,4 @@
-package ui;
+package funciones;
 
 public abstract class Formas {
 	

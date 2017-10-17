@@ -14,7 +14,7 @@ public class main {
 	static Canvas canvas = new  Canvas(shell, SWT.None);
 	static int posicionX = 165;
 	static int posicionY = 0;
-	static Grafo objeto1 = new Grafo("inicio", new Rectangle(0, 0,posicionX, posicionY), lista, null, null);
+	static Grafo objeto1 = new Grafo("inicio", new Rectangle(0, 0,posicionX, 10), lista, null, null);
     static Label etiqueta = new Label(shell, SWT.NONE);
 	
 	public static void main(String [] args) {
@@ -22,7 +22,7 @@ public class main {
 		Grafo objeto2;
 		objeto2 = objeto1;
 		posicionY += 55;
-		ArrayList<String> lista1 = new ArrayList();
+		ArrayList<String> lista1 = new ArrayList<String>();
 		lista1.add("x = 10".toString());
 		lista1.add("metodo1");
 		lista1.add("metodo2");
@@ -54,7 +54,7 @@ public class main {
 		//objeto2 = objeto1;
 		posicionY = 0;
 		dibujoInicial(objeto2);
-		canvas.setBackground(new Color(shell.getDisplay(), 255, 255, 200));
+		canvas.setBackground(new Color(shell.getDisplay(), 255, 255, 255));
 		canvas.setBounds(0, 0, 400, 695);
 		crearBotones();
 		crearEtiquetas();
@@ -70,8 +70,9 @@ public class main {
 	}
 	
 	private static void crearEtiquetas() {
-		etiqueta.setBackground(new Color(shell.getDisplay(), 255, 255, 200));
+		etiqueta.setBackground(new Color(shell.getDisplay(), 255, 255, 255));
 		etiqueta.setBounds(400, 0, 300, 300);
+		new uiController().cambiarEtiqueta("./src/img/inicioFin.png", null);
 		
 	}
 	
@@ -87,15 +88,15 @@ public class main {
 			public void handleEvent(Event arg0) {
 				if (objeto1.hasPrev()){
 					objeto1 = (Grafo) objeto1.getPrevio();
-					if( objeto1.getNombreNodo().equals("inicio")) {return;}
-					if( objeto1.getNombreNodo().equals("condicion")) {formas.condicion(objeto1);}
-					if( objeto1.getNombreNodo().equals("while")) {formas.cicloWhile(objeto1);}
-					if( objeto1.getNombreNodo().equals("for")) {formas.cicloFor(objeto1);}
-					if( objeto1.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto1);}
-					if( objeto1.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto1);}
+					if( objeto1.getNombreNodo().equals("inicio")) {new uiController().cambiarEtiqueta("./src/img/inicioFin.png", null);}
+					if( objeto1.getNombreNodo().equals("condicion")) {formas.condicion(objeto1, "a");}
+					if( objeto1.getNombreNodo().equals("while")) {formas.cicloWhile(objeto1, "a");}
+					if( objeto1.getNombreNodo().equals("for")) {formas.cicloFor(objeto1, "a");}
+					if( objeto1.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto1, "a");}
+					if( objeto1.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto1, "a");}
 				}
 				else {
-					System.out.println("fin");
+					
 					return;
 				}
 			}
@@ -106,19 +107,18 @@ public class main {
 		siguiente.setText("Siguiente");
 		siguiente.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		siguiente.addListener(SWT.Selection, new Listener() {
-//mandar al crearFormas el grafo al q voy y el que tengo
 			@Override
 			public void handleEvent(Event arg0) {
 				if (objeto1.hasNext()){
 					objeto1 = (Grafo) objeto1.next();
-					if( objeto1.getNombreNodo().equals("condicion")) {formas.condicion(objeto1);}
-					if( objeto1.getNombreNodo().equals("while")) {formas.cicloWhile(objeto1);}
-					if( objeto1.getNombreNodo().equals("for")) {formas.cicloFor(objeto1);}
-					if( objeto1.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto1);}
-					if( objeto1.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto1);}
+					if( objeto1.getNombreNodo().equals("condicion")) {formas.condicion(objeto1, "");}
+					if( objeto1.getNombreNodo().equals("while")) {formas.cicloWhile(objeto1, "");}
+					if( objeto1.getNombreNodo().equals("for")) {formas.cicloFor(objeto1, "");}
+					if( objeto1.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto1, "");}
+					if( objeto1.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto1, "");}
 				}
 				else {
-					System.out.println("fin");
+					new uiController().cambiarEtiqueta("./src/img/inicioFin.png", null);
 					return;
 				}
 				
@@ -142,11 +142,11 @@ public class main {
 		CrearFormasInicio formas = new CrearFormasInicio();
 		while (true){
 			if( objeto2.getNombreNodo().equals("inicio")) {formas.inicioFin(objeto2);}
-			if( objeto2.getNombreNodo().equals("condicion")) {formas.condicion(objeto2);}
-			if( objeto2.getNombreNodo().equals("while")) {formas.cicloWhile(objeto2);}
-			if( objeto2.getNombreNodo().equals("for")) {formas.cicloFor(objeto2);}
-			if( objeto2.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto2);}
-			if( objeto2.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto2);}
+			if( objeto2.getNombreNodo().equals("condicion")) {formas.condicion(objeto2, "");}
+			if( objeto2.getNombreNodo().equals("while")) {formas.cicloWhile(objeto2, "");}
+			if( objeto2.getNombreNodo().equals("for")) {formas.cicloFor(objeto2, "");}
+			if( objeto2.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto2, "");}
+			if( objeto2.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto2, "");}
 			if(objeto2.hasNext()) {
 				objeto2 = (Grafo) objeto2.next(); 
 			}

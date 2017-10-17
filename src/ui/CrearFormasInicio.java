@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class CrearFormasInicio extends Formas {
 
 	@Override
-	protected void condicion(Grafo objeto) {
+	protected void condicion(Grafo objeto, String anterior) {
 		ArrayList<String> instrucciones = objeto.getInstrucciones(); 
 		int y = ui.main.posicionY;
     	int x = ui.main.posicionX;
@@ -38,7 +38,7 @@ public class CrearFormasInicio extends Formas {
 	}
 
 	@Override
-	protected void cicloWhile(Grafo objeto) {
+	protected void cicloWhile(Grafo objeto, String anterior) {
 		ArrayList<String> instrucciones = objeto.getInstrucciones(); 
 		int y = ui.main.posicionY;
     	int x = ui.main.posicionX;
@@ -75,7 +75,7 @@ public class CrearFormasInicio extends Formas {
 	}
 
 	@Override
-	protected void cicloFor(Grafo objeto) {
+	protected void cicloFor(Grafo objeto, String anterior) {
 		int y = ui.main.posicionY;
     	int x = ui.main.posicionX;
     	ArrayList<String> instrucciones = objeto.getInstrucciones(); 
@@ -110,7 +110,7 @@ public class CrearFormasInicio extends Formas {
 	}
 
 	@Override
-	protected void definicionVariable(Grafo objeto) {
+	protected void definicionVariable(Grafo objeto, String anterior) {
 		int y = ui.main.posicionY;
     	int x = ui.main.posicionX;
     	ArrayList<String> instrucciones = objeto.getInstrucciones(); 
@@ -127,7 +127,7 @@ public class CrearFormasInicio extends Formas {
 	}
 
 	@Override
-	protected void instruccionesVarias(Grafo objeto) {
+	protected void instruccionesVarias(Grafo objeto, String anterior) {
 		int y = ui.main.posicionY;
     	int x = ui.main.posicionX;
     	ArrayList<String> instrucciones = objeto.getInstrucciones(); 
