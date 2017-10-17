@@ -5,7 +5,7 @@ import org.eclipse.swt.events.PaintListener;
 import funciones.Grafo;
 import java.util.ArrayList;
 
-public class CrearFormasInicio extends Formas {
+public class CrearFormasInicio extends funciones.Formas {
 
 	@Override
 	protected void condicion(Grafo objeto, String anterior) {
