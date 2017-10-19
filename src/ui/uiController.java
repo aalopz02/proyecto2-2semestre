@@ -6,7 +6,9 @@ import org.eclipse.swt.graphics.Image;
 import funciones.Grafo;
 
 public class uiController {
-
+	/**
+	 * @cambia etiqueta que muestra la figura del diagrama
+	 */
 	public void cambiarEtiqueta(String archivo, Grafo objeto) {
 		Image image = new Image(ui.main.shell.getDisplay(), archivo);
 		if (objeto == null) {
@@ -18,7 +20,9 @@ public class uiController {
 		ui.main.etiqueta.setBackgroundImage(image);
 		
 	}
-	
+	/**
+	 * @dibuja el texto de las instrucciones en la imagen a cambiar
+	 */
 	public void dibujarImagen(Grafo objeto, Image imagen) {
 		ArrayList<String> instrucciones = objeto.getInstrucciones(); 
 		GC gc = new GC(imagen);

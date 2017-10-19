@@ -7,7 +7,10 @@ import funciones.Grafo;
 public class CrearFormas extends funciones.Formas {
 	GC gc = new GC(ui.main.canvas);
 	uiController fondo = new uiController();
-	
+	/**
+	 * @dibuja las flechas para guiar en el diagrama, recibe el nodo y un String
+	 * para ver si se esta devolviendo o avanzando 
+	 */
 	protected void crearFlechas(Grafo objetoSiguiente, String anterior) {
 		Grafo objetoAnterior ;
 		if (anterior.equals("a")) {
@@ -34,36 +37,46 @@ public class CrearFormas extends funciones.Formas {
 			gc.drawPolyline(puntosFlecha);
 			
 		}
-		
+	/**
+	 * @llama funcion del uiController para hacer el cambio por una condicion
+	 */	
 	@Override
 	protected void condicion(Grafo objeto, String anterior) {
 		fondo.cambiarEtiqueta( "./src/img/condicion.png", objeto);
 		crearFlechas(objeto, anterior);
 		
-		
 	}
-
+	/**
+	 * @llama funcion del uiController para hacer el cambio por un ciclo while
+	 */	
 	@Override
 	protected void cicloWhile(Grafo objeto, String anterior) {
 		fondo.cambiarEtiqueta( "./src/img/While.png", objeto);
 		crearFlechas(objeto, anterior);
 		
 	}
-
+	/**
+	 * @llama funcion del uiController para hacer el cambio por un ciclo for
+	 */	
 	@Override
 	protected void cicloFor(Grafo objeto, String anterior) {
 		fondo.cambiarEtiqueta( "./src/img/For.png", objeto);
 		crearFlechas(objeto, anterior);
 		
 	}
-
+	/**
+	 * @llama funcion del uiController para hacer el cambio por una 
+	 * definicion de variable o una instruccion
+	 */	
 	@Override
 	protected void definicionVariable(Grafo objeto, String anterior) {
 		fondo.cambiarEtiqueta( "./src/img/declaracion.png", objeto);
 		crearFlechas(objeto, anterior);
 		
 	}
-
+	/**
+	 * @llama funcion del uiController para hacer el cambio por un metodo externo
+	 */	
 	@Override
 	protected void instruccionesVarias(Grafo objeto, String anterior) {
 		fondo.cambiarEtiqueta( "./src/img/metodoExterno.png", objeto);

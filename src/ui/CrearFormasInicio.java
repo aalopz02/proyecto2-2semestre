@@ -6,7 +6,9 @@ import funciones.Grafo;
 import java.util.ArrayList;
 
 public class CrearFormasInicio extends funciones.Formas {
-
+	/**
+	 * @dibuja en el canvas la representacion de la condicional
+	 */	
 	@Override
 	protected void condicion(Grafo objeto, String anterior) {
 		ArrayList<String> instrucciones = objeto.getInstrucciones(); 
@@ -36,7 +38,9 @@ public class CrearFormasInicio extends funciones.Formas {
 		dibujarLinea();
 		
 	}
-
+	/**
+	 * @dibuja en el canvas la representacion de un ciclo while
+	 */
 	@Override
 	protected void cicloWhile(Grafo objeto, String anterior) {
 		ArrayList<String> instrucciones = objeto.getInstrucciones(); 
@@ -71,9 +75,10 @@ public class CrearFormasInicio extends funciones.Formas {
 		ui.main.posicionY += 30;
 		dibujarLinea();
 		
-		
 	}
-
+	/**
+	 * @dibuja en el canvas la representacion de un ciclo for
+	 */
 	@Override
 	protected void cicloFor(Grafo objeto, String anterior) {
 		int y = ui.main.posicionY;
@@ -108,7 +113,10 @@ public class CrearFormasInicio extends funciones.Formas {
 		dibujarLinea();
 		
 	}
-
+	/**
+	 * @dibuja en el canvas la representacion de una definicion de variable
+	 * o instruccion
+	 */
 	@Override
 	protected void definicionVariable(Grafo objeto, String anterior) {
 		int y = ui.main.posicionY;
@@ -125,7 +133,9 @@ public class CrearFormasInicio extends funciones.Formas {
 		dibujarLinea();
 		
 	}
-
+	/**
+	 * @dibuja en el canvas la representacion de un metodo externo
+	 */
 	@Override
 	protected void instruccionesVarias(Grafo objeto, String anterior) {
 		int y = ui.main.posicionY;
@@ -143,7 +153,9 @@ public class CrearFormasInicio extends funciones.Formas {
 		dibujarLinea();
 		
 	}
-	
+	/**
+	 * @dibuja en el canvas el inicio y el fin del diagrama
+	 */
 	protected void inicioFin(funciones.Grafo objeto1) {
 		int y = ui.main.posicionY;
 		int x = ui.main.posicionX;
@@ -166,7 +178,9 @@ public class CrearFormasInicio extends funciones.Formas {
 			});
 		}
 	}
-	
+	/**
+	 * @dibuja en el canvas una linea para conectar cada nodo del diagrama
+	 */
 	private static void dibujarLinea() {
 		int y = ui.main.posicionY;
 		int x = ui.main.posicionX;

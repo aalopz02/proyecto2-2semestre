@@ -91,7 +91,7 @@ public class Grafo implements Iterator<Object>{
 		return instrucciones;
 	}
 	/**
-	 * @param instrucciones the instrucciones to set
+	 * @param define las instrucciones
 	 */
 	public void setInstrucciones(ArrayList<String> instrucciones) {
 		this.instrucciones = instrucciones;

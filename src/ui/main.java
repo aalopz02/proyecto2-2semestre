@@ -16,7 +16,9 @@ public class main {
 	static int posicionY = 0;
 	static Grafo objeto1 = new Grafo("inicio", new Rectangle(0, 0,posicionX, 10), lista, null, null);
     static Label etiqueta = new Label(shell, SWT.NONE);
-	
+    /**
+	 * @main de la aplicacion
+	 */
 	public static void main(String [] args) {
 		Display display = Display.getDefault();
 		Grafo objeto2;
@@ -45,13 +47,6 @@ public class main {
 		objeto6.setNext(objeto7);
 		objeto7.setNext(objeto8);
 		objeto1 = objeto2;
-		//for (int i = 1; i < 5; i ++) {
-		//	posicionY += 30;
-		//	Grafo objeto3 = new Grafo("declaracion", new Rectangle(0, 0, posicionX, posicionY), lista, null, objeto2);
-		//	objeto2.setNext(objeto3);
-		//	objeto2 = objeto3;
-		//  }
-		//objeto2 = objeto1;
 		posicionY = 0;
 		dibujoInicial(objeto2);
 		canvas.setBackground(new Color(shell.getDisplay(), 255, 255, 255));
@@ -68,14 +63,18 @@ public class main {
 	    	}
 	    }
 	}
-	
+	/**
+	 * @crea las etiquetas de la ventana
+	 */
 	private static void crearEtiquetas() {
 		etiqueta.setBackground(new Color(shell.getDisplay(), 255, 255, 255));
 		etiqueta.setBounds(400, 0, 300, 300);
 		new uiController().cambiarEtiqueta("./src/img/inicioFin.png", null);
 		
 	}
-	
+	/**
+	 * @crea los botones de la ventana
+	 */
 	private static void crearBotones() {
 		Button anterior = new Button(shell, SWT.PUSH);
 		anterior.setBounds(0, 695, 60, 25);
@@ -96,7 +95,6 @@ public class main {
 					if( objeto1.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto1, "a");}
 				}
 				else {
-					
 					return;
 				}
 			}
@@ -137,7 +135,9 @@ public class main {
 		
 		
 	}
-	
+	/**
+	 * @param recibe el nodo del grafo inicial
+	 */
 	public static void dibujoInicial(funciones.Grafo objeto2) {
 		CrearFormasInicio formas = new CrearFormasInicio();
 		while (true){
@@ -152,7 +152,6 @@ public class main {
 			}
 			else {break;}
 		}
-		
 		
 	}
 }
