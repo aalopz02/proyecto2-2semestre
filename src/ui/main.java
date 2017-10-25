@@ -141,6 +141,7 @@ public class main {
 	 */
 	public static void dibujoInicial(funciones.Grafo objeto2) {
 		CrearFormasInicio formas = new CrearFormasInicio();
+		formas.calcularTamaño();
 		while (true){
 			if( objeto2.getNombreNodo().equals("inicio")) {formas.inicioFin(objeto2);}
 			if( objeto2.getNombreNodo().equals("condicion")) {formas.condicion(objeto2, "");}
