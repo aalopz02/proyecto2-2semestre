@@ -9,14 +9,18 @@ import org.eclipse.swt.widgets.*;
 
 public class main {	
 	
+	pvivate Stopwatch timer = new Stopwatch().start();
+	//agregar en funcion que hace el grafo....timer.stop()........stopwatch.elapsed(MILLISECONDS)
+	
 	static ArrayList<String> lista;
 	static Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
 	static Canvas canvas = new  Canvas(shell, SWT.None);
 	static int posicionX = 165;
 	static int posicionY = 0;
 	static Grafo objeto1 = new Grafo("inicio", new Rectangle(0, 0,posicionX, 10), lista, null, null);
-    static Label etiqueta = new Label(shell, SWT.NONE);
-    /**
+        static Label etiqueta = new Label(shell, SWT.NONE);
+	
+        /**
 	 * @main de la aplicacion
 	 */
 	public static void main(String [] args) {
@@ -154,4 +158,17 @@ public class main {
 		}
 		
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
