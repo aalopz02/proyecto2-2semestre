@@ -53,10 +53,22 @@ public class uiController {
 		
 	}
 	
+	Grafo objeto3 = new Grafo("condicion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto2);
+		posicionY += 125;
+		Grafo objeto4 = new Grafo("declaracion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto3);
+		posicionY += 55;
+		Grafo objeto5 = new Grafo("while", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto4);
+	
 	public void hacerGrafo(){
 		inicio = ui.main.objeto1;
+		posicionY = ui.main.posicionY;
+		posicionX = ui.main.posicionX;
+		
 		for (int = 0; i < largolistaintrucciones; i ++){
-			objeto2 = new Grafo(lista[],);
+			objeto2 = new Grafo(i.lista[nombre], new Rectangle(0, 0, posicionX, poicionY), i.lista[instrucciones], null, inicio);
+			inicio.setNext(objeto2);
+			posicionY += 30;
+			inicio = objeto2;
 		
 		}
 		
