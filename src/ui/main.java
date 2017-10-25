@@ -9,6 +9,7 @@ import org.eclipse.swt.widgets.*;
 
 public class main {
 	
+	public float tiempo = 0.0;
 	static ArrayList<String> lista;
 	static Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
 	static Canvas canvas = new  Canvas(shell, SWT.None);
@@ -48,7 +49,6 @@ public class main {
 		objeto6.setNext(objeto7);
 		objeto7.setNext(objeto8);
 		objeto1 = objeto2;
-		posicionY = 0;
 		dibujoInicial(objeto2);
 		canvas.setBackground(new Color(shell.getDisplay(), 255, 255, 255));
 		canvas.setBounds(0, 0, 400, 695);
@@ -155,16 +155,6 @@ public class main {
 		}
 		
 	}
-
-
-
-
-
-
-
-
-
-
 
 
 }
