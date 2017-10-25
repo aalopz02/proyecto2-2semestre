@@ -66,14 +66,18 @@ public class uiController {
 		posicionX = ui.main.posicionX;
 		Stopwatch timer = new Stopwatch().start();
 		for (int = 0; i < largolistaintrucciones; i ++){
+			if (i.lista[nombre].equals("condicion")){posicionY += 125;}
+			if (i.lista[nombre].equals("while")){posicionY += 120;}
+			if (i.lista[nombre].equals("metodo")){posicionY += 55;}
+			if (i.lista[nombre].equals("declaracion")){posicionY += 55;}
+			if (i.lista[nombre].equals("for")){posicionY += 120;}
 			objeto2 = new Grafo(i.lista[nombre], new Rectangle(0, 0, posicionX, poicionY), i.lista[instrucciones], null, inicio);
 			inicio.setNext(objeto2);
-			posicionY += 30;
 			inicio = objeto2;
 		
 		}
 		timer.stop();
 		ui.main.tiempo = stopwatch.elapsed(MILLISECONDS);
 	}
-	
+
 }
