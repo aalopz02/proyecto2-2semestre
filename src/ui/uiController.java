@@ -60,6 +60,7 @@ public class uiController {
 		Grafo objeto5 = new Grafo("while", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto4);
 	
 	public void hacerGrafo(){
+		//agregar en funcion que hace el grafo....timer.stop()........stopwatch.elapsed(MILLISECONDS)
 		inicio = ui.main.objeto1;
 		posicionY = ui.main.posicionY;
 		posicionX = ui.main.posicionX;
