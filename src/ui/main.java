@@ -7,10 +7,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.widgets.*;
 
-public class main {	
-	
-	pvivate Stopwatch timer = new Stopwatch().start();
-	//agregar en funcion que hace el grafo....timer.stop()........stopwatch.elapsed(MILLISECONDS)
+public class main {
 	
 	static ArrayList<String> lista;
 	static Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
