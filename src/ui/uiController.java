@@ -53,4 +53,13 @@ public class uiController {
 		
 	}
 	
+	public void hacerGrafo(){
+		inicio = ui.main.objeto1;
+		for (int = 0; i < largolistaintrucciones; i ++){
+			objeto2 = new Grafo(lista[],);
+		
+		}
+		
+	}
+	
 }
