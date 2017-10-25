@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class CrearFormasInicio extends funciones.Formas {
 	
-	private int n = 0;
+	private int n = 1;
 	
 	private void calcularTamano(){
 		int tamano = 0;
