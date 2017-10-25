@@ -63,7 +63,7 @@ public class uiController {
 		inicio = ui.main.objeto1;
 		posicionY = ui.main.posicionY;
 		posicionX = ui.main.posicionX;
-		
+	
 		for (int = 0; i < largolistaintrucciones; i ++){
 			objeto2 = new Grafo(i.lista[nombre], new Rectangle(0, 0, posicionX, poicionY), i.lista[instrucciones], null, inicio);
 			inicio.setNext(objeto2);
