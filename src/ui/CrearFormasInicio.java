@@ -9,10 +9,10 @@ public class CrearFormasInicio extends funciones.Formas {
 	
 	private int n = 0;
 	
-	private void calcularTamaño(){
+	private void calcularTamano(){
 		int tamano = 0;
 		while (ui.main.objeto.next()){
-			tamano += 1;
+			tamano += 0.1;
 		}
 		if (tamaño < 1){
 			n = 1;
