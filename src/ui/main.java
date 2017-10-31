@@ -3,44 +3,62 @@ package ui;
 import java.util.ArrayList;
 import funciones.Grafo;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.*;
 
 public class main {
 	
-	public float tiempo = 0.0;
+	public float tiempo = (float) 0.0;
 	static ArrayList<String> lista;
 	static Shell shell = new Shell(SWT.CLOSE | SWT.TITLE | SWT.MIN);
-	static Canvas canvas = new  Canvas(shell, SWT.None);
-	static int posicionX = 165;
+	static Canvas canvas = new  Canvas(shell,SWT.NONE);
+	static int posicionX = 200;
 	static int posicionY = 0;
 	static Grafo objeto1 = new Grafo("inicio", new Rectangle(0, 0,posicionX, 10), lista, null, null);
-        static Label etiqueta = new Label(shell, SWT.NONE);
+    static Label etiqueta = new Label(shell, SWT.NONE);
 	
-        /**
+     /**
 	 * @main de la aplicacion
 	 */
 	public static void main(String [] args) {
 		Display display = Display.getDefault();
+		canvas.setBounds(0, 0, 400, 695);
 		Grafo objeto2;
 		objeto2 = objeto1;
-		posicionY += 55;
 		ArrayList<String> lista1 = new ArrayList<String>();
 		lista1.add("x = 10".toString());
 		lista1.add("metodo1");
 		lista1.add("metodo2");
+		posicionY += 55;
 		Grafo objeto3 = new Grafo("condicion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto2);
 		posicionY += 125;
 		Grafo objeto4 = new Grafo("declaracion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto3);
 		posicionY += 55;
 		Grafo objeto5 = new Grafo("while", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto4);
-		posicionY += 120;
+		posicionY += 110;
 		Grafo objeto6 = new Grafo("metodo", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto5);
 		posicionY += 55;
-		Grafo objeto7 = new Grafo("for", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto6);
+		Grafo objeto7 = new Grafo("while", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto6);
+		posicionY += 110;
+		Grafo objeto8 = new Grafo("condicion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto7);
+		posicionY += 125;
+		Grafo objeto9 = new Grafo("for", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto8);
+		posicionY += 110;
+		Grafo objeto10 = new Grafo("metodo", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto9);
+		posicionY += 55;
+		Grafo objeto11 = new Grafo("condicion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto10);
+		posicionY += 125;
+		Grafo objeto12 = new Grafo("for", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto11);
 		posicionY += 120;
-		Grafo objeto8 = new Grafo("inicio", new Rectangle(0, 0, posicionX, posicionY), lista, null, objeto7);
+		Grafo objeto13 = new Grafo("condicion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto12);
+		posicionY += 125;
+		Grafo objeto14 = new Grafo("for", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto13);
+		posicionY += 120;
+		Grafo objeto15 = new Grafo("inicio", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto14);
 		posicionY = 0;
 		objeto2.setNext(objeto3);
 		objeto3.setNext(objeto4);
@@ -48,10 +66,17 @@ public class main {
 		objeto5.setNext(objeto6);
 		objeto6.setNext(objeto7);
 		objeto7.setNext(objeto8);
+		objeto8.setNext(objeto9);
+		objeto9.setNext(objeto10);
+		objeto10.setNext(objeto11);
+		objeto11.setNext(objeto12);
+		objeto12.setNext(objeto13);
+		objeto13.setNext(objeto14);
+		objeto14.setNext(objeto15);
 		objeto1 = objeto2;
 		dibujoInicial(objeto2);
-		canvas.setBackground(new Color(shell.getDisplay(), 255, 255, 255));
-		canvas.setBounds(0, 0, 400, 695);
+		canvas.setBackground(new Color(shell.getDisplay(), 255,255,255));
+		
 		crearBotones();
 		crearEtiquetas();
 		shell.setText ("Diagrama");
@@ -82,6 +107,7 @@ public class main {
 		anterior.setText("Anterior");
 		anterior.setBackground(new Color(shell.getDisplay(), 200, 200, 200));
 		CrearFormas formas =  new CrearFormas();
+		formas.calcularTamano();
 		anterior.addListener(SWT.Selection, new Listener() {
 
 			@Override
@@ -141,20 +167,23 @@ public class main {
 	 */
 	public static void dibujoInicial(funciones.Grafo objeto2) {
 		CrearFormasInicio formas = new CrearFormasInicio();
-		formas.calcularTamaño();
-		while (true){
+		formas.calcularTamano();
+		int n = 1;
+		while ((boolean) objeto2.hasNext()){
+			n += 1;
+			objeto2 = (Grafo) objeto2.next();
+		}
+		objeto2 = objeto1;
+		for (int i = 0; i<n; i++) {
 			if( objeto2.getNombreNodo().equals("inicio")) {formas.inicioFin(objeto2);}
 			if( objeto2.getNombreNodo().equals("condicion")) {formas.condicion(objeto2, "");}
 			if( objeto2.getNombreNodo().equals("while")) {formas.cicloWhile(objeto2, "");}
 			if( objeto2.getNombreNodo().equals("for")) {formas.cicloFor(objeto2, "");}
 			if( objeto2.getNombreNodo().equals("declaracion")) {formas.definicionVariable(objeto2, "");}
 			if( objeto2.getNombreNodo().equals("metodo")) {formas.instruccionesVarias(objeto2, "");}
-			if(objeto2.hasNext()) {
-				objeto2 = (Grafo) objeto2.next(); 
-			}
-			else {break;}
+			objeto2 = (Grafo) objeto2.next(); 
 		}
-		
+			
 	}
 
 

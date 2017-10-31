@@ -53,31 +53,25 @@ public class uiController {
 		
 	}
 	
-	Grafo objeto3 = new Grafo("condicion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto2);
-		posicionY += 125;
-		Grafo objeto4 = new Grafo("declaracion", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto3);
-		posicionY += 55;
-		Grafo objeto5 = new Grafo("while", new Rectangle(0, 0, posicionX, posicionY), lista1, null, objeto4);
-	
-	public void hacerGrafo(){
+	//public void hacerGrafo(){
 		
-		inicio = ui.main.objeto1;
-		posicionY = ui.main.posicionY;
-		posicionX = ui.main.posicionX;
-		Stopwatch timer = new Stopwatch().start();
-		for (int = 0; i < largolistaintrucciones; i ++){
-			if (i.lista[nombre].equals("condicion")){posicionY += 125;}
-			if (i.lista[nombre].equals("while")){posicionY += 120;}
-			if (i.lista[nombre].equals("metodo")){posicionY += 55;}
-			if (i.lista[nombre].equals("declaracion")){posicionY += 55;}
-			if (i.lista[nombre].equals("for")){posicionY += 120;}
-			objeto2 = new Grafo(i.lista[nombre], new Rectangle(0, 0, posicionX, poicionY), i.lista[instrucciones], null, inicio);
-			inicio.setNext(objeto2);
-			inicio = objeto2;
+		//Grafo inicio = ui.main.objeto1;
+		//int posicionY = ui.main.posicionY;
+		//int posicionX = ui.main.posicionX;
+		//Stopwatch timer = new Stopwatch().start();
+		//for (int i = 0; i < largolistaintrucciones; i ++){
+		//	if (i.lista[nombre].equals("condicion")){posicionY += 125;}
+		//	if (i.lista[nombre].equals("while")){posicionY += 120;}
+		//	if (i.lista[nombre].equals("metodo")){posicionY += 55;}
+		//	if (i.lista[nombre].equals("declaracion")){posicionY += 55;}
+		//	if (i.lista[nombre].equals("for")){posicionY += 120;}
+		//	Grafo objeto2 = new Grafo(i.lista[nombre], new Rectangle(0, 0, posicionX, poicionY), i.lista[instrucciones], null, inicio);
+		//	inicio.setNext(objeto2);
+		//	inicio = objeto2;
 		
-		}
-		timer.stop();
-		ui.main.tiempo = stopwatch.elapsed(MILLISECONDS);
-	}
+		//}
+		//timer.stop();
+		//ui.main.tiempo = stopwatch.elapsed(MILLISECONDS);
+	//}
 
 }
