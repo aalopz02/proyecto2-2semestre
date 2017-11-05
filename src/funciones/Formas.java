@@ -1,6 +1,6 @@
 package funciones;
 /**
- * @clase con metodos abstractos segun cada instruccion
+ * Clase con metodos abstractos segun cada instruccion
  */
 public abstract class Formas {
 	

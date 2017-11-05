@@ -7,26 +7,24 @@ public class ListaOrdenada {
 	private static ListaOrdenada instance = null;
 	ArrayList<String> lista = new ArrayList<String>();
 	/**
-	 * @cconstructor ListaOrdenada
+	 * @Constructor ListaOrdenada
 	 */
 	public static ListaOrdenada getInstace() {
 		if (instance == null) {
 			instance = new ListaOrdenada();
 		}
 		return instance;
-		
 	}
 	/**
-	 * @param agrega valor a la lista
+	 * @param valor se agrega a la lista
 	 */
 	public void agregarValorLista(String valor) {
 		this.lista.add(valor);
 	}
 	/**
-	 * @return la lista
+	 * @return lista
 	 */
 	public ArrayList<String> getLista() {
-		return this.lista;
-		
+		return this.lista;	
 	} 
 }

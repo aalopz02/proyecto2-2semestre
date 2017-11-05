@@ -2,18 +2,22 @@ package funciones;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import org.eclipse.swt.graphics.Rectangle;
 
+/**
+ * Clase Grafo que define cada nodo del grafo
+ */
 public class Grafo implements Iterator<Object>{
 
 	private String nombreNodo;
 	private Rectangle contenido;
-	private ArrayList<String> instrucciones;
+	private ArrayList<Object> instrucciones;
 	private Object siguiente = null;
 	private Object previo = null;
-	
-	public Grafo(String nombreNodo, Object contenido, ArrayList<String> instrucciones, Object siguiente, Object previo){
+	/**
+	 * @Constructor Grafo
+	 */
+	public Grafo(String nombreNodo, Object contenido, ArrayList<Object> instrucciones, Object siguiente, Object previo){
 		setNombreNodo(nombreNodo);
 		setContenido((Rectangle) contenido);
 		setInstrucciones(instrucciones);
@@ -21,7 +25,7 @@ public class Grafo implements Iterator<Object>{
 		setPrevio(previo);
 	}
 	/**
-	 * @return si tiene un elemento siguiente
+	 * @return boolean tiene un elemento siguiente
 	 */
 	@Override
 	public boolean hasNext() {
@@ -31,7 +35,7 @@ public class Grafo implements Iterator<Object>{
 		return true;
 	}
 	/**
-	 * @return el siguiente
+	 * @return Grafo siguiente
 	 */
 	@Override
 	public Object next() {
@@ -41,19 +45,19 @@ public class Grafo implements Iterator<Object>{
 		return null;
 	}
 	/**
-	 * @param define el nodo siguiente
+	 * @param Nodo siguiente el nodo siguiente
 	 */
 	public void setNext(Object siguiente) {
 		this.siguiente = siguiente;
 	}	
 	/**
-	 * @return contenido
+	 * @return Rectangle contenido que contiene la posicion
 	 */
 	public Rectangle getContenido() {
 		return contenido;
 	}
 	/**
-	 * @param define el contenido 
+	 * @param Contenido para definir la posicion del nodo en canvas
 	 */
 	public void setContenido(Rectangle contenido) {
 		this.contenido = contenido;
@@ -67,7 +71,7 @@ public class Grafo implements Iterator<Object>{
 	}
 
 	/**
-	 * @param define el nombre del nodo
+	 * @param nombreNodo define el nombre del nodo 
 	 */
 	public void setNombreNodo(String nombreNodo) {
 		this.nombreNodo = nombreNodo;
@@ -79,25 +83,25 @@ public class Grafo implements Iterator<Object>{
 		return previo;
 	}
 	/**
-	 * @param define el nodo previo del nodo actual
+	 * @param Grafo previo para definir el nodo anterior
 	 */
 	public void setPrevio(Object previo) {
 		this.previo = previo;
 	}
 	/**
-	 * @return the instrucciones
+	 * @return instrucciones
 	 */
-	public ArrayList<String> getInstrucciones() {
+	public ArrayList<Object> getInstrucciones() {
 		return instrucciones;
 	}
 	/**
-	 * @param define las instrucciones
+	 * @param instrucciones contiene los datos de las instrucciones
 	 */
-	public void setInstrucciones(ArrayList<String> instrucciones) {
+	public void setInstrucciones(ArrayList<Object> instrucciones) {
 		this.instrucciones = instrucciones;
 	}
 	/**
-	 * @return si tiene objeto anterior
+	 * @return boolean tiene objeto anterior
 	 */
 	public boolean hasPrev() {
 		if (this.previo == null) {
